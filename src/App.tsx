@@ -14,7 +14,7 @@ import "./App.css";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/ecommerce-app">
       <div className="overflow-x-hidden">
         <Header />
         <main>
