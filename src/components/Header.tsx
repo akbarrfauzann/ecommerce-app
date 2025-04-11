@@ -1,22 +1,27 @@
 import { useState, useEffect } from "react";
-import { GrCart } from "react-icons/gr";
+import { useSelector } from "react-redux";
+import { BsCart } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import logoLight from "../assets/images/logo.png";
 import logoDark from "../assets/images/logo-dark.png";
 import ToggleDarkMode from "./ToggleDarkMode";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 type RootState = {
   cart: {
     cartItems: Array<number>;
   };
+  wishlist: {
+    wishlistItems: Array<number>;
+  }
 };
 export default function Header() {
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const totalItems = cartItems.length;
+  const wishlistItems = useSelector((state: RootState) => state.wishlist.wishlistItems);
+  const wishlistCount = wishlistItems.length;
 
   const [isDark, setIsDark] = useState(false);
 
@@ -64,23 +69,23 @@ export default function Header() {
             {/* Right side - Icons */}
             <div className="ml-auto">
               <ul className="flex items-center gap-x-4 lg:gap-2">
-                <li>
+                <li className="relative">
                   <ToggleDarkMode />
                 </li>
                 <li className="relative">
-                  <Link to="/cart" className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors">
-                    <GrCart />
+                  <Link to="/cart" className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors" aria-label="Cart">
+                    <BsCart />
                     {totalItems > 0 && <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">{totalItems}</span>}
                   </Link>
                 </li>
                 <li className="relative">
-                  <Link to="/wishlist" className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors">
+                  <Link to="/wishlist" className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors" aria-label="Wishlist">
                     <FaRegHeart />
-                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">1</span>
+                    {wishlistCount > 0 && <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">{wishlistCount}</span>}
                   </Link>
                 </li>
-                <li>
-                  <Link to="/checkout" className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors">
+                <li className="relative">
+                  <Link to="/checkout" className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors" aria-label="User Profile">
                     <FaRegUser />
                   </Link>
                 </li>

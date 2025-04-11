@@ -1,54 +1,25 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 import { FaTrash } from "react-icons/fa";
+import { removeFromWishlist } from "../redux/wishlistSlice";
 import numberWithCommas from "../utils/numberWithCommas";
 
-type WishlistItem = {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  quantity: number;
-  size: string;
-};
-
 const Wishlist = () => {
-  const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([
-    {
-      id: 1,
-      name: "Classic Blue T-Shirt",
-      image: "/src/assets/images/shirt.png",
-      price: 300000,
-      quantity: 1,
-      size: "M",
-    },
-    {
-      id: 2,
-      name: "Black Denim Jacket",
-      image: "/src/assets/images/jacket.png",
-      price: 199999,
-      quantity: 1,
-      size: "L",
-    },
-    {
-      id: 3,
-      name: "Adidas Sneakers",
-      image: "/src/assets/images/shoes.png",
-      price: 149999,
-      quantity: 1,
-      size: "42",
-    },
-  ]);
+  const dispatch = useDispatch();
+  const wishlistItems = useSelector((state: RootState) => state.wishlist.wishlistItems);
 
   const handleRemoveItem = (id: number) => {
-    setWishlistItems(wishlistItems.filter((item) => item.id !== id));
-  };
+      dispatch(removeFromWishlist({ id }));
+    };
 
   return (
     <div className="container mx-auto p-4 dark:bg-dark">
       <h1 className="text-3xl text-black dark:text-white font-bold mb-6 uppercase">My Wishlist</h1>
 
       <div className="bg-white dark:bg-dark border dark:border dark:border-white rounded-lg shadow-md overflow-hidden">
-        {wishlistItems.length > 0 ? (
+      {wishlistItems.length === 0 ? (
+          <div className="p-6 text-center text-gray-500 dark:text-gray-400">Your wishlist is empty.</div>
+        ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gray-100 dark:bg-secondary">
@@ -76,7 +47,10 @@ const Wishlist = () => {
                     <td className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">Rp{numberWithCommas(item.price)}</td>
                     <td className="px-6 py-4 text-right whitespace-nowrap text-sm font-medium">
                       <div className="flex justify-end space-x-2">
-                        <button className="bg-primary hover:bg-secondary hover:text-white dark:bg-dark-secondary dark:text-black text-white py-1 px-3 rounded text-xs uppercase cursor-pointer">Add to Cart</button>
+                        <button 
+                          className="bg-primary hover:bg-secondary hover:text-white dark:bg-dark-secondary dark:text-black text-white py-1 px-3 rounded text-xs uppercase cursor-pointer">
+                          Add to Cart
+                        </button>
                         <button
                           onClick={() => handleRemoveItem(item.id)}
                           className="text-red-500 hover:text-red-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-full transition-colors duration-200 cursor-pointer"
@@ -91,8 +65,6 @@ const Wishlist = () => {
               </tbody>
             </table>
           </div>
-        ) : (
-          <div className="p-6 text-center text-gray-500 dark:text-gray-400">Your wishlist is empty.</div>
         )}
       </div>
     </div>

@@ -10,11 +10,13 @@ import Checkout from "./pages/Checkout";
 import Payment from "./pages/Payment";
 import NotFound from "./pages/NotFound";
 import Wishlist from "./pages/Wishlist";
+import { ToastContainer } from "react-toastify";
 import "./App.css";
 
 function App() {
   return (
-    <Router basename="/ecommerce-app">
+    <>
+    <Router basename="/ecommerce-app/">
       <div className="overflow-x-hidden">
         <Header />
         <main>
@@ -32,6 +34,8 @@ function App() {
         <Footer />
       </div>
     </Router>
+    <ToastContainer position="bottom-right" autoClose={3000} />
+    </>
   );
 }
 

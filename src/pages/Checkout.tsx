@@ -91,10 +91,16 @@ const Checkout = () => {
                 </div>
               </div>
             </div>
-            <div className="space-y-4 mt-4">
-              <div className="flex items-center p-2 gap-2 border-2 border-secondary dark:border-white rounded-lg w-full max-w-md">
-                <input type="text" placeholder="Discount code" className="flex-1 p-2 outline-none dark:text-white" />
-                <button className="bg-primary dark:bg-dark-secondary text-white dark:text-black px-4 py-2 rounded-lg font-semibold cursor-pointer">Apply</button>
+            <div className="space-y-4 mt-2">
+                <div className="grid grid-cols-3 gap-2 border-2 border-secondary dark:border-white rounded-lg p-2 w-full">
+                <input
+                  type="text"
+                  placeholder="Discount code"
+                  className="col-span-2 p-2 outline-none dark:text-white rounded-lg border border-gray-300 dark:border-gray-600"
+                />
+                <button className="bg-primary dark:bg-dark-secondary text-white dark:text-black px-2 py-2 rounded-lg font-semibold cursor-pointer">
+                  Apply
+                </button>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600 dark:text-tertiary">Subtotal</span>

@@ -61,8 +61,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-white dark:bg-dark text-secondary">
-      <div className="container mx-auto px-4 py-8 md:py-12">
+    <footer className="container mx-auto bg-white dark:bg-dark text-secondary">
+      <div className="px-4 py-8 md:py-12">
         <div className="flex flex-col md:flex-row md:items-start md:justify-around gap-8">
           {/* Logo Section */}
           <div className="flex justify-center md:justify-start">
