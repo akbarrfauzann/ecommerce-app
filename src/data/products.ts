@@ -15,7 +15,13 @@ export type Product = {
   flaws?: string;
 };
 
-export const categories = ["All", "Jacket", "Shirt", "Hoodie", "Pants"] as const;
+export const categories = [
+  "All",
+  "Jacket",
+  "Shirt",
+  "Hoodie",
+  "Pants",
+] as const;
 
 export const newArrivalsProducts: Product[] = [
   {

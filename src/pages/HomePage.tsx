@@ -6,7 +6,7 @@ import InfiniteMarquee from "../components/InfiniteMarquee";
 
 export default function HomePage() {
   return (
-    <main className="container mx-auto dark:bg-dark">
+    <main className="dark:bg-dark">
       <BannerCarousel />
       <NewArrivals />
       <OurProducts />

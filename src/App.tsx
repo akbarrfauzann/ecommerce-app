@@ -16,25 +16,25 @@ import "./App.css";
 function App() {
   return (
     <>
-    <Router basename="/ecommerce-app/">
-      <div className="overflow-x-hidden">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/products" element={<OurProducts />} />
-            <Route path="/products/:id" element={<ProductDetail />} />
-            <Route path="/cart" element={<ShoppingCart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/wishlist" element={<Wishlist />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
-    <ToastContainer position="bottom-right" autoClose={3000} />
+      <Router basename="/ecommerce-app/">
+        <div className="overflow-x-hidden">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/products" element={<OurProducts />} />
+              <Route path="/products/:id" element={<ProductDetail />} />
+              <Route path="/cart" element={<ShoppingCart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/wishlist" element={<Wishlist />} />
+              <Route path="/payment" element={<Payment />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 }

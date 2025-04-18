@@ -21,21 +21,30 @@ const InfiniteMarquee = () => {
   ];
   return (
     <section>
-      <div className="container mx-auto px-6 py-8 bg-tertiary">
+      <div className="px-6 py-8 bg-tertiary">
         <h1 className="text-2xl md:text-3xl font-bold italic text-center uppercase">
           Shop <span className="text-primary">Popular</span> Vintage Brands
         </h1>
         <Marquee className="my-16" autoFill={true} gradient={false} speed={50}>
           <div className="flex items-center gap-12 mx-8">
             {brands.map((brand) => (
-              <img key={brand.id} src={brand.image} alt={brand.name} className="h-16 md:h-20 w-auto object-contain" />
+              <img
+                key={brand.id}
+                src={brand.image}
+                alt={brand.name}
+                className="h-16 md:h-20 w-auto object-contain"
+              />
             ))}
           </div>
         </Marquee>
       </div>
       <div className="bg-white h-60 flex flex-col items-center justify-center italic dark:bg-dark">
-        <p className="text-primary dark:text-white text-center text-2xl md:text-3xl font-bold">F*CK FAST FASHION,</p>
-        <p className="text-primary dark:text-white text-center text-2xl md:text-3xl font-bold mt-2">SHOP SECOND HAND.</p>
+        <p className="text-primary dark:text-white text-center text-2xl md:text-3xl font-bold">
+          F*CK FAST FASHION,
+        </p>
+        <p className="text-primary dark:text-white text-center text-2xl md:text-3xl font-bold mt-2">
+          SHOP SECOND HAND.
+        </p>
       </div>
     </section>
   );

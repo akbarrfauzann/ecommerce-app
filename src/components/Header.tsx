@@ -15,12 +15,14 @@ type RootState = {
   };
   wishlist: {
     wishlistItems: Array<number>;
-  }
+  };
 };
 export default function Header() {
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const totalItems = cartItems.length;
-  const wishlistItems = useSelector((state: RootState) => state.wishlist.wishlistItems);
+  const wishlistItems = useSelector(
+    (state: RootState) => state.wishlist.wishlistItems
+  );
   const wishlistCount = wishlistItems.length;
 
   const [isDark, setIsDark] = useState(false);
@@ -44,7 +46,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="container mx-auto">
+    <header>
       <nav className="bg-white dark:bg-dark w-full h-20 sticky top-0 transition-colors duration-200">
         <div className="w-full h-full">
           <div className="relative flex h-full mx-auto px-6 items-center">
@@ -63,7 +65,12 @@ export default function Header() {
             {/* Center - Logo */}
             <div className="absolute left-1/2 -translate-x-1/2 transition-opacity duration-200">
               <Link to="/">
-                <img src={isDark ? logoDark : logoLight} width={50} height={50} alt="Brand Logo" />
+                <img
+                  src={isDark ? logoDark : logoLight}
+                  width={50}
+                  height={50}
+                  alt="Brand Logo"
+                />
               </Link>
             </div>
             {/* Right side - Icons */}
@@ -73,19 +80,39 @@ export default function Header() {
                   <ToggleDarkMode />
                 </li>
                 <li className="relative">
-                  <Link to="/cart" className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors" aria-label="Cart">
+                  <Link
+                    to="/cart"
+                    className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors"
+                    aria-label="Cart"
+                  >
                     <BsCart />
-                    {totalItems > 0 && <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">{totalItems}</span>}
+                    {totalItems > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                        {totalItems}
+                      </span>
+                    )}
                   </Link>
                 </li>
                 <li className="relative">
-                  <Link to="/wishlist" className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors" aria-label="Wishlist">
+                  <Link
+                    to="/wishlist"
+                    className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors"
+                    aria-label="Wishlist"
+                  >
                     <FaRegHeart />
-                    {wishlistCount > 0 && <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">{wishlistCount}</span>}
+                    {wishlistCount > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                        {wishlistCount}
+                      </span>
+                    )}
                   </Link>
                 </li>
                 <li className="relative">
-                  <Link to="/checkout" className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors" aria-label="User Profile">
+                  <Link
+                    to="/checkout"
+                    className="text-xl hover:text-primary dark:text-white dark:hover:text-dark-secondary transition-colors"
+                    aria-label="User Profile"
+                  >
                     <FaRegUser />
                   </Link>
                 </li>
