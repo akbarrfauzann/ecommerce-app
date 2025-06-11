@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import { removeFromCart, clearCart } from "../redux/cartSlice";
 import numberWithCommas from "../utils/numberWithCommas";
+import { toast } from "react-toastify";
 
 type RootState = {
   cart: {
@@ -29,6 +30,7 @@ const ShoppingCart = () => {
 
   const handleRemoveItem = (id: number) => {
     dispatch(removeFromCart({ id }));
+    toast.error("Item removed from cart!");
   };
 
   const handleClearCart = () => {
@@ -36,7 +38,7 @@ const ShoppingCart = () => {
   };
 
   return (
-    <div className="px-4 py-8 dark:bg-dark">
+    <div className="px-4 py-8 dark:bg-dark bg-white">
       <h1 className="text-3xl font-bold mb-8 dark:text-white uppercase">
         Shopping Cart
       </h1>
@@ -44,7 +46,7 @@ const ShoppingCart = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left side - Cart Items Table */}
         <div className="lg:col-span-2">
-          <div className="bg-white dark:bg-dark border dark:border dark:border-white rounded-lg shadow overflow-hidden">
+          <div className="bg-white dark:bg-dark border dark:border dark:border-white rounded-lg shadow-lg overflow-hidden">
             {cartItems.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -108,7 +110,7 @@ const ShoppingCart = () => {
                 </table>
               </div>
             ) : (
-              <div className="p-6 text-center dark:text-white">
+              <div className="p-8 text-center dark:text-white">
                 Your cart is empty.
               </div>
             )}
@@ -126,7 +128,7 @@ const ShoppingCart = () => {
 
         {/* Right side - Order Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-white border dark:border dark:border-white dark:bg-dark rounded-lg shadow p-6">
+          <div className="bg-white border dark:border dark:border-white dark:bg-dark rounded-lg shadow-lg p-6">
             <h2 className="text-lg font-semibold mb-4 dark:text-white">
               Cart total
             </h2>

@@ -225,13 +225,13 @@ const Checkout = () => {
               formData && (
                 <div className="p-6">
                   <h1 className="text-xl font-bold mb-4">Order Review</h1>
-                  <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                  <div className="bg-gray-50 dark:dark:bg-secondary p-4 rounded-lg mb-6">
                     <h2 className="text-lg font-semibold mb-3">
                       Delivery Information
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-gray-500 dark:text-white">
                           Full Name
                         </p>
                         <p className="font-medium">
@@ -239,25 +239,25 @@ const Checkout = () => {
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-gray-500 dark:text-white">
                           Email
                         </p>
                         <p className="font-medium">{formData.email}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-gray-500 dark:text-white">
                           Phone
                         </p>
                         <p className="font-medium">{formData.phone}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-gray-500 dark:text-white">
                           Address
                         </p>
                         <p className="font-medium">{formData.address}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-gray-500 dark:text-white">
                           City & Zip Code
                         </p>
                         <p className="font-medium">
@@ -265,7 +265,7 @@ const Checkout = () => {
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-gray-500 dark:text-white">
                           Country
                         </p>
                         <p className="font-medium">{formData.country}</p>
@@ -280,7 +280,7 @@ const Checkout = () => {
                     <div
                       className={`border-2 rounded-lg p-4 cursor-pointer ${
                         selectedPayment === "bank-indo"
-                          ? "border-primary"
+                          ? "border-primary dark:border-dark-secondary"
                           : "border-gray-200"
                       }`}
                       onClick={() => handlePaymentSelect("bank-indo")}
@@ -305,7 +305,7 @@ const Checkout = () => {
                     <div
                       className={`border-2 rounded-lg p-4 cursor-pointer ${
                         selectedPayment === "gopay"
-                          ? "border-primary"
+                          ? "border-primary dark:border-dark-secondary"
                           : "border-gray-200"
                       }`}
                       onClick={() => handlePaymentSelect("gopay")}
@@ -327,7 +327,7 @@ const Checkout = () => {
                   <div className="flex space-x-4">
                     <button
                       onClick={() => setShowReview(false)}
-                      className="flex items-center justify-center bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white py-3 px-4 rounded-lg font-semibold transition-colors duration-200 cursor-pointer uppercase"
+                      className="flex items-center justify-center bg-gray-200 text-gray-800 dark:bg-secondary dark:text-white py-3 px-4 rounded-lg font-semibold transition-colors duration-200 cursor-pointer uppercase"
                     >
                       Back to Form
                     </button>

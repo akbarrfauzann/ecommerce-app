@@ -16,26 +16,23 @@ const Footer = () => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const darkModeObserver = new MutationObserver((mutations) => {
+    const checkDarkMode = () => {
+      const isDarkMode = document.documentElement.classList.contains("dark");
+      setIsDark(isDarkMode);
+    };
+
+    checkDarkMode();
+
+    const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (mutation.target instanceof HTMLElement) {
-          if (mutation.target.classList.contains("dark")) {
-            setIsDark(true);
-          } else {
-            setIsDark(false);
-          }
+        if (mutation.attributeName === "class") {
+          checkDarkMode();
         }
       });
     });
 
-    darkModeObserver.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    setIsDark(document.documentElement.classList.contains("dark"));
-
-    return () => darkModeObserver.disconnect();
+    observer.observe(document.documentElement, { attributes: true });
+    return () => observer.disconnect();
   }, []);
 
   const footerSections: FooterSection[] = [

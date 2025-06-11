@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ProductCard from "../components/ProductCard";
 import { categories, ourProducts } from "../data/products";
+import ProductCard from "../components/ProductCard";
 const INITIAL_VISIBLE_PRODUCTS = 4;
 
 const OurProducts = () => {
@@ -78,7 +78,7 @@ const OurProducts = () => {
 
           {/* View More Button */}
           {filteredProducts.length > INITIAL_VISIBLE_PRODUCTS && (
-            <div className="text-center mt-8">
+            <div className="text-center mt-6">
               <button
                 className="text-sm font-bold text-black dark:text-white dark:hover:text-dark-secondary underline underline-offset-4 cursor-pointer hover:text-primary transition-colors"
                 onClick={handleViewMoreClick}
